@@ -1,0 +1,98 @@
+name: TPExec_TETS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Project/Solution
+      uses: actions/checkout@master
+      
+    #- name: Setup DotNet
+    #  uses: actions/setup-dotnet@v4
+    #  with:
+    #    dotnet-version: |
+    #      3.1.x
+    #      5.0.x
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+ 
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v2
+
+    - name: Install WinGet
+      uses: Cyberboss/install-winget@v1
+
+    - name: Download Ivi Shared Components
+      run: curl https://www.ivifoundation.org/downloads/Shared%20Components/IviSharedComponents_302.exe -o ./IviSharedComponents_302.exe
+      
+    - name: Install Ivi Shared Components
+      run: Invoke-Expression -Command './IviSharedComponents_302.exe /install /quiet /norestart'
+      
+    - name: Download Ivi.Net Shared Components
+      run: curl https://www.ivifoundation.org/downloads/Shared%20Components/IviNetSharedComponents_200.exe -o ./IviNetSharedComponents_200.exe
+
+    - name: Install Ivi.Net Shared Components
+      run: Invoke-Expression -Command './IviNetSharedComponents_200.exe /install /quiet /norestart'
+      
+    - name: Setup NI Visa
+      run: winget install --id=NI.ni-visa --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
+
+    # - name: Install NI Package Manager
+    #  run: winget install --id=NI.ni-packagemanager --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
+
+    - name: Install NI Visa Shared Components
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-shared-components"'
+      
+    - name: Install NI Visa .Net Shared Components 7.2
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-dotnet-shared-components-7.2"'
+
+    - name: Install NI Meas Studio VS 2012 Components
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-2012"'
+
+    - name: Install NI Meas Studio Assy VS 2010
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-devcore-fx40-support"'
+      
+    - name: Install NI Meas Studio VS 2013 Components
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-2013"'
+
+    - name: Install NI Meas Studio Assy VS 2012
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-devcore-fx45-support"'
+      
+    - name: Install NI IVI .Net Adapters
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-dll-2013"'
+
+    - name: Install NI 488.2
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-488.2"'
+
+    - name: Install NI Meas Studio Assy VS 2013
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-ivi-net-adapters"'
+
+    - name: Install NI IVI .Net Shared Components
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-ivi-net-shared-fx20-2.0.0"'
+
+    - name: Get Folder Contents
+      run: Get-ChildItem 'C:\Program Files (x86)\National Instruments' - Recurse
+      
+    - name: Restore Dependencies
+      working-directory: TPExec_TETS/Source
+      run: nuget restore TPExec_TETS.vbproj   
+        
+    - name: Build
+      working-directory: TPExec_TETS/Source
+
+      # DotNet Framework
+      run: msbuild TPExec_TETS.vbproj -t:rebuild -property:Configuration=Release -property:Platform=x86
+
+    #- name: Test
+    #  working-directory: TPExec_TETS/Source
+    #  run: dotnet test --no-build --verbosity normal
