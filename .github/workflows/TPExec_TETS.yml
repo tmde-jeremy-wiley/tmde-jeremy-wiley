@@ -81,7 +81,7 @@ jobs:
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-ivi-net-shared-fx20-2.0.0"'
 
     - name: Get Folder Contents
-      run: Get-ChildItem 'C:\Program Files (x86)\National Instruments' - Recurse
+      run: Get-ChildItem 'C:\Program Files (x86)\National Instruments' -Recurse
       
     - name: Restore Dependencies
       working-directory: TPExec_TETS/Source
