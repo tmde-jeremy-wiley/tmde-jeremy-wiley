@@ -70,15 +70,21 @@ jobs:
       
     - name: Install NI Meas Studio VS 2012 Components
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-2012"'
+     
+    - name: Install NI Meas Studio VS 2013 Components
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-2013"'
 
     - name: Install NI Meas Studio Assy VS 2010
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-devcore-fx40-support"'
       
-    - name: Install NI Meas Studio VS 2013 Components
-      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-2013"'
-
     - name: Install NI Meas Studio Assy VS 2012
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-devcore-fx45-support"'
+
+    - name: Install NI Meas Studio Common Library Dev for .Net
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-fx40-19.0.0-development"'
+
+    - name: Install NI Meas Studio Common Library Dev for .Net
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-fx40-19.1.0-development"'
       
     - name: Install NI IVI .Net Adapters
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-dll-2013"'
