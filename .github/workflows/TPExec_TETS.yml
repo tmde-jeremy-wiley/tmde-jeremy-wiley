@@ -67,6 +67,9 @@ jobs:
       
     - name: Install NI Visa 23.5 .Net Development Support
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-23.5-dotnet-development-support"'
+
+    - name: Install NI Visa 24.5 .Net Development Support
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-24.5-dotnet-development-support"'
       
     - name: Install NI Meas Studio VS 2012 Components
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-2012"'
@@ -92,15 +95,24 @@ jobs:
     - name: Install NI 488.2
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-488.2"'
 
+    - name: Install NI 488.2 Development Support
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-488.2-development-support"'
+
+    - name: Install NI 488.2 .Net 4.0 Lang Dev Core
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-488.2-dotnet-devcore-fx40-support"'
+
+    - name: Install NI 488.2 .Net 4.5 Lang Dev Core
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-488.2-dotnet-devcore-fx45-support"'
+
+    - name: Install NI 488.2 Visual Basic Interface
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-488.2-vb-support"'
+      
     - name: Install NI Meas Studio Assy VS 2013
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-ivi-net-adapters"'
 
     - name: Install NI IVI .Net Shared Components
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-ivi-net-shared-fx20-2.0.0"'
-
-    - name: Install NI Visa NS .Net API
-      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-ns-17.0.0-dotnet-fx45-runtime"'
-      
+     
     - name: Get Folder Contents
       run: Get-ChildItem 'C:\Program Files (x86)\National Instruments' -Recurse
       
