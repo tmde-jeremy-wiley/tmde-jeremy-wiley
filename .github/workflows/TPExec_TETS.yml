@@ -64,6 +64,9 @@ jobs:
 
     - name: Install NI Visa 17.5 .Net Development Support
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-17.5-dotnet-development-support"'
+
+    - name: Install NI Visa 23.3 .Net Development Support
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-23.3-dotnet-development-support"'
       
     - name: Install NI Visa 23.5 .Net Development Support
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-23.5-dotnet-development-support"'
@@ -73,10 +76,16 @@ jobs:
       
     - name: Install NI Meas Studio VS 2012 Components
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-2012"'
-     
+
+    - name: Install NI Meas Studio VS 2012 Code Generator Assy
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-codegendll-2012"'
+      
     - name: Install NI Meas Studio VS 2013 Components
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-2013"'
 
+    - name: Install NI Meas Studio VS 2013 Code Generator Assy
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-codegendll-2013"'
+      
     - name: Install NI Meas Studio Assy VS 2010
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-devcore-fx40-support"'
       
@@ -88,10 +97,10 @@ jobs:
 
     - name: Install NI Meas Studio Common Library Dev for .Net
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-fx40-19.1.0-development"'
-      
+
     - name: Install NI IVI .Net Adapters
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-dll-2013"'
-
+      
     - name: Install NI 488.2
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-488.2"'
 
@@ -106,6 +115,15 @@ jobs:
 
     - name: Install NI 488.2 Visual Basic Interface
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-488.2-vb-support"'
+
+    - name: Install NI IVI Compliance Package
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-icp"'
+
+    - name: Install NI IVI Compliance Package Support
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-icp-core"'
+
+    - name: Install NI IVI-COM Support
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-icp-com-adapters"'
       
     - name: Install NI Meas Studio Assy VS 2013
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-ivi-net-adapters"'
