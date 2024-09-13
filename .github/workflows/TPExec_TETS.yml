@@ -52,10 +52,22 @@ jobs:
 
     - name: Install NI Visa Shared Components
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-shared-components"'
+
+    - name: Install NI Visa .Net Shared Components 5.8
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-dotnet-shared-components-5.8"'
       
     - name: Install NI Visa .Net Shared Components 7.2
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-dotnet-shared-components-7.2"'
 
+    - name: Install NI Visa Shared Binaries and Reg keys
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-development-common"'
+
+    - name: Install NI Visa 17.5 .Net Development Support
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-17.5-dotnet-development-support"'
+      
+    - name: Install NI Visa 23.5 .Net Development Support
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-23.5-dotnet-development-support"'
+      
     - name: Install NI Meas Studio VS 2012 Components
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-mstudio-common-2012"'
 
@@ -80,6 +92,9 @@ jobs:
     - name: Install NI IVI .Net Shared Components
       run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-ivi-net-shared-fx20-2.0.0"'
 
+    - name: Install NI Visa NS .Net API
+      run: Invoke-Expression -Command '"C:/Program Files/National Instruments/NI Package Manager/nipkg.exe install ni-visa-ns-17.0.0-dotnet-fx45-runtime"'
+      
     - name: Get Folder Contents
       run: Get-ChildItem 'C:\Program Files (x86)\National Instruments' -Recurse
       
